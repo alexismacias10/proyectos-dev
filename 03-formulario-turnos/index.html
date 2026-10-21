@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reservar turno</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="card">
+  <h1>Reservar turno</h1>
+  <form id="turno" novalidate>
+    <label>Nombre completo
+      <input name="nombre" required minlength="3" autocomplete="name">
+      <small class="error" data-for="nombre"></small>
+    </label>
+    <label>Email
+      <input name="email" type="email" required autocomplete="email">
+      <small class="error" data-for="email"></small>
+    </label>
+    <label>Fecha
+      <input name="fecha" type="date" required>
+      <small class="error" data-for="fecha"></small>
+    </label>
+    <label>Horario
+      <select name="hora" required>
+        <option value="">Elegí un horario</option>
+        <option>09:00</option><option>10:00</option><option>11:00</option>
+        <option>15:00</option><option>16:00</option><option>17:00</option>
+      </select>
+      <small class="error" data-for="hora"></small>
+    </label>
+    <label>Notas (opcional)
+      <textarea name="notas" rows="3" maxlength="200"></textarea>
+    </label>
+    <button type="submit">Confirmar turno</button>
+  </form>
+
+  <section id="resumen" hidden>
+    <h2>¡Turno reservado!</h2>
+    <p id="resumen-texto"></p>
+    <button id="nuevo" type="button">Reservar otro</button>
+  </section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>

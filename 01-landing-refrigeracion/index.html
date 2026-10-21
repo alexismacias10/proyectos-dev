@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RefrigeracionTUC | Reparación de heladeras y aires</title>
+<meta name="description" content="Reparación de heladeras, freezers, aires acondicionados y lavarropas. Fuera de Tafí Viejo: presupuesto $10.000.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="hero">
+  <nav class="nav">
+    <span class="logo">RefrigeracionTUC</span>
+    <a class="btn btn-small" href="https://wa.me/5493816443138" target="_blank" rel="noopener">WhatsApp</a>
+  </nav>
+  <div class="hero-content">
+    <h1>Tu tranquilidad, nuestro trabajo</h1>
+    <p>Reparaciones de heladeras, aires y lavarropas. Todas las marcas y modelos.</p>
+    <a class="btn" href="https://wa.me/5493816443138" target="_blank" rel="noopener">Pedir presupuesto</a>
+  </div>
+</header>
+
+<main>
+  <section class="section">
+    <h2>Servicios</h2>
+    <div class="grid" id="servicios"></div>
+  </section>
+
+  <section class="section alt">
+    <h2>Zonas de atención</h2>
+    <div class="zona">
+      <div>
+        <h3>Tafí Viejo</h3>
+        <p>Visita incluida en la zona.</p>
+      </div>
+      <div>
+        <h3>Fuera de Tafí Viejo</h3>
+        <p>Presupuesto de visita: <strong>$10.000</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Consultá sin compromiso</h2>
+    <form id="contacto" class="form" novalidate>
+      <label>Nombre
+        <input name="nombre" required minlength="2" autocomplete="name">
+      </label>
+      <label>Teléfono
+        <input name="telefono" type="tel" required pattern="[0-9 +()-]{6,}" autocomplete="tel">
+      </label>
+      <label>Servicio
+        <select name="servicio" required>
+          <option value="">Elegí un servicio</option>
+          <option>Heladera / freezer</option>
+          <option>Aire acondicionado</option>
+          <option>Lavarropas</option>
+          <option>Carga de gas automotor</option>
+        </select>
+      </label>
+      <button class="btn" type="submit">Enviar por WhatsApp</button>
+      <p class="msg" role="status"></p>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <p>Recibimos todos los medios de pago · Calidad, confianza y buen servicio</p>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

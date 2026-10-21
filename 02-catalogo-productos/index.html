@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Catálogo de productos</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Catálogo</h1>
+  <div class="controles">
+    <input id="buscar" type="search" placeholder="Buscar producto...">
+    <select id="categoria">
+      <option value="">Todas las categorías</option>
+    </select>
+    <select id="orden">
+      <option value="">Orden original</option>
+      <option value="precio-asc">Precio: menor a mayor</option>
+      <option value="precio-desc">Precio: mayor a menor</option>
+    </select>
+  </div>
+</header>
+<main>
+  <p id="contador" class="contador"></p>
+  <ul id="lista" class="lista"></ul>
+  <p id="vacio" class="vacio" hidden>No encontramos productos con esos filtros.</p>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
