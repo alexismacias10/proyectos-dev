@@ -3,29 +3,71 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Catálogo de productos</title>
+<title>Catálogo de productos | Tienda Tech</title>
+<meta name="description" content="Catálogo con búsqueda en vivo, filtros por categoría, orden por precio y carrito.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <h1>Catálogo</h1>
-  <div class="controles">
-    <input id="buscar" type="search" placeholder="Buscar producto...">
-    <select id="categoria">
-      <option value="">Todas las categorías</option>
-    </select>
-    <select id="orden">
-      <option value="">Orden original</option>
-      <option value="precio-asc">Precio: menor a mayor</option>
-      <option value="precio-desc">Precio: mayor a menor</option>
-    </select>
+
+<header class="barra">
+  <div class="contenedor barra-fila">
+    <a class="volver" href="../" aria-label="Volver al inicio">← Proyectos</a>
+    <span class="logo">Tienda<b>Tech</b></span>
+    <button class="carrito-btn" id="carrito-btn" type="button" aria-label="Ver carrito">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+      <span class="badge" id="carrito-n">0</span>
+    </button>
   </div>
 </header>
-<main>
-  <p id="contador" class="contador"></p>
+
+<section class="portada">
+  <div class="contenedor">
+    <h1>Tecnología que <em>mejora tu día</em></h1>
+    <p>Encontrá audio, computación y accesorios al mejor precio.</p>
+    <div class="buscador">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="buscar" type="search" placeholder="Buscar producto..." aria-label="Buscar producto" autocomplete="off">
+    </div>
+  </div>
+</section>
+
+<main class="contenedor">
+  <div class="herramientas">
+    <div class="chips" id="chips" role="group" aria-label="Categorías"></div>
+    <label class="orden">
+      <span>Ordenar</span>
+      <select id="orden">
+        <option value="">Destacados</option>
+        <option value="precio-asc">Precio: menor a mayor</option>
+        <option value="precio-desc">Precio: mayor a menor</option>
+        <option value="nombre">Nombre A-Z</option>
+      </select>
+    </label>
+  </div>
+
+  <p id="contador" class="contador" aria-live="polite"></p>
   <ul id="lista" class="lista"></ul>
-  <p id="vacio" class="vacio" hidden>No encontramos productos con esos filtros.</p>
+
+  <div id="vacio" class="vacio" hidden>
+    <strong>Sin resultados</strong>
+    <p>No encontramos productos con esos filtros.</p>
+    <button type="button" id="limpiar" class="btn">Limpiar filtros</button>
+  </div>
 </main>
+
+<aside class="panel" id="panel" aria-hidden="true">
+  <div class="panel-cab">
+    <h2>Tu carrito</h2>
+    <button type="button" id="panel-cerrar" class="cerrar" aria-label="Cerrar carrito">×</button>
+  </div>
+  <ul class="panel-lista" id="panel-lista"></ul>
+  <div class="panel-pie">
+    <div class="total"><span>Total</span><strong id="total">$0</strong></div>
+    <button type="button" class="btn btn-bloque" id="vaciar">Vaciar carrito</button>
+  </div>
+</aside>
+<div class="velo" id="velo" hidden></div>
+
 <script src="script.js"></script>
 </body>
 </html>

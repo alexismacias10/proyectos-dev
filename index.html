@@ -3,35 +3,192 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Proyectos front-end | Alexis Macías</title>
+<title>Alexis Macías | Desarrollador front-end</title>
+<meta name="description" content="Portfolio de proyectos front-end con HTML, CSS y JavaScript: landing, catálogo y sistema de turnos.">
 <style>
-  body { margin: 0; font-family: system-ui, sans-serif; background: #f4f6fa; color: #1d2733; }
-  main { max-width: 760px; margin: 0 auto; padding: 2.5rem 1rem; }
-  h1 { margin-bottom: .3rem; }
-  .sub { color: #5b6573; margin-top: 0; }
-  .proyecto { display: block; background: #fff; border-radius: 14px; padding: 1.2rem 1.4rem; margin: 1rem 0; text-decoration: none; color: inherit; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
-  .proyecto:hover { outline: 2px solid #2563eb; }
-  .proyecto h2 { margin: 0 0 .3rem; color: #1d4ed8; font-size: 1.15rem; }
-  .proyecto p { margin: 0; color: #4b5563; }
+  :root {
+    --bg: #0b1020;
+    --bg-2: #111936;
+    --card: rgba(255,255,255,.05);
+    --borde: rgba(255,255,255,.1);
+    --texto: #e8ecf8;
+    --suave: #9aa6c7;
+    --azul: #4f8cff;
+    --violeta: #8b5cf6;
+    --cian: #22d3ee;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: var(--texto);
+    background:
+      radial-gradient(900px 500px at 85% -10%, rgba(139,92,246,.35), transparent 60%),
+      radial-gradient(800px 500px at -10% 10%, rgba(79,140,255,.3), transparent 60%),
+      var(--bg);
+    background-attachment: fixed;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  a { color: inherit; }
+  .contenedor { max-width: 1040px; margin: 0 auto; padding: 0 1.25rem; }
+
+  .nav { display: flex; justify-content: space-between; align-items: center; padding: 1.4rem 0; }
+  .marca { font-weight: 800; letter-spacing: -.02em; text-decoration: none; }
+  .marca span { color: var(--azul); }
+  .nav-links { display: flex; gap: 1.4rem; font-size: .95rem; }
+  .nav-links a { color: var(--suave); text-decoration: none; transition: color .2s; }
+  .nav-links a:hover { color: #fff; }
+
+  .hero { padding: 4.5rem 0 3.5rem; }
+  .estado { display: inline-flex; align-items: center; gap: .55rem; padding: .4rem .9rem; border: 1px solid var(--borde); border-radius: 999px; background: var(--card); font-size: .85rem; color: var(--suave); }
+  .estado i { width: 8px; height: 8px; border-radius: 50%; background: #34d399; box-shadow: 0 0 0 4px rgba(52,211,153,.2); }
+  h1 { font-size: clamp(2.4rem, 6vw, 4.2rem); line-height: 1.05; letter-spacing: -.035em; margin: 1.3rem 0 1.1rem; }
+  h1 em { font-style: normal; background: linear-gradient(90deg, var(--azul), var(--violeta), var(--cian)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .bajada { font-size: 1.15rem; color: var(--suave); max-width: 600px; margin: 0 0 2rem; }
+  .acciones { display: flex; flex-wrap: wrap; gap: .8rem; }
+  .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .85rem 1.5rem; border-radius: 12px; font-weight: 700; text-decoration: none; transition: transform .2s, box-shadow .2s, background .2s; }
+  .btn-principal { background: linear-gradient(135deg, var(--azul), var(--violeta)); color: #fff; box-shadow: 0 10px 30px rgba(79,140,255,.35); }
+  .btn-principal:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(79,140,255,.5); }
+  .btn-sec { border: 1px solid var(--borde); background: var(--card); }
+  .btn-sec:hover { background: rgba(255,255,255,.1); }
+
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 3rem; max-width: 520px; }
+  .stat { border-left: 2px solid var(--azul); padding-left: .9rem; }
+  .stat strong { display: block; font-size: 1.7rem; letter-spacing: -.02em; }
+  .stat span { color: var(--suave); font-size: .85rem; }
+
+  .seccion { padding: 2.5rem 0 4rem; }
+  .seccion h2 { font-size: 1.8rem; letter-spacing: -.02em; margin: 0 0 .4rem; }
+  .seccion > .contenedor > p { color: var(--suave); margin: 0 0 2rem; }
+
+  .proyectos { display: grid; gap: 1.4rem; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); }
+  .proyecto { position: relative; display: flex; flex-direction: column; border: 1px solid var(--borde); border-radius: 20px; background: var(--card); overflow: hidden; text-decoration: none; transition: transform .25s, border-color .25s, box-shadow .25s; backdrop-filter: blur(6px); }
+  .proyecto:hover { transform: translateY(-6px); border-color: rgba(79,140,255,.6); box-shadow: 0 24px 50px rgba(0,0,0,.4); }
+  .vista { height: 150px; display: grid; place-items: center; position: relative; overflow: hidden; }
+  .vista svg { width: 64px; height: 64px; color: #fff; filter: drop-shadow(0 6px 14px rgba(0,0,0,.3)); transition: transform .3s; }
+  .proyecto:hover .vista svg { transform: scale(1.12) rotate(-4deg); }
+  .v1 { background: linear-gradient(135deg, #0a5aa0, #22d3ee); }
+  .v2 { background: linear-gradient(135deg, #7c3aed, #ec4899); }
+  .v3 { background: linear-gradient(135deg, #059669, #3b82f6); }
+  .numero { position: absolute; top: .8rem; left: 1rem; font-weight: 800; font-size: .8rem; letter-spacing: .1em; background: rgba(0,0,0,.3); padding: .2rem .6rem; border-radius: 999px; }
+  .cuerpo { padding: 1.4rem; display: flex; flex-direction: column; gap: .7rem; flex: 1; }
+  .cuerpo h3 { margin: 0; font-size: 1.2rem; letter-spacing: -.01em; }
+  .cuerpo p { margin: 0; color: var(--suave); font-size: .95rem; }
+  .tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: auto; padding-top: .5rem; }
+  .tags span { font-size: .75rem; padding: .25rem .65rem; border-radius: 999px; background: rgba(79,140,255,.14); color: #a9c4ff; border: 1px solid rgba(79,140,255,.25); }
+  .ver { color: var(--azul); font-weight: 700; font-size: .9rem; }
+  .ver::after { content: " →"; transition: margin .2s; }
+  .proyecto:hover .ver::after { margin-left: .3rem; }
+
+  .stack { display: flex; flex-wrap: wrap; gap: .7rem; }
+  .stack span { padding: .55rem 1.1rem; border: 1px solid var(--borde); border-radius: 12px; background: var(--card); font-weight: 600; font-size: .95rem; }
+
+  footer { border-top: 1px solid var(--borde); padding: 2rem 0; color: var(--suave); font-size: .9rem; text-align: center; }
+  footer a { color: var(--azul); text-decoration: none; }
+
+  @media (max-width: 560px) {
+    .nav-links { display: none; }
+    .hero { padding-top: 2.5rem; }
+    .stats { grid-template-columns: repeat(3, 1fr); gap: .6rem; }
+    .stat strong { font-size: 1.35rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } html { scroll-behavior: auto; } }
 </style>
 </head>
 <body>
-<main>
-  <h1>Proyectos front-end</h1>
-  <p class="sub">HTML, CSS y JavaScript sin frameworks.</p>
 
-  <a class="proyecto" href="01-landing-refrigeracion/">
-    <h2>1. Landing de servicio técnico</h2>
-    <p>Servicios, zonas de atención y formulario que arma un mensaje de WhatsApp.</p>
-  </a>
-  <a class="proyecto" href="02-catalogo-productos/">
-    <h2>2. Catálogo de productos</h2>
-    <p>Búsqueda, filtro por categoría y orden por precio.</p>
-  </a>
-  <a class="proyecto" href="03-formulario-turnos/">
-    <h2>3. Formulario de turnos</h2>
-    <p>Validación campo por campo y pantalla de confirmación.</p>
-  </a>
-</main>
+<div class="contenedor">
+  <nav class="nav">
+    <a class="marca" href="#">alexis<span>.dev</span></a>
+    <div class="nav-links">
+      <a href="#proyectos">Proyectos</a>
+      <a href="#stack">Tecnologías</a>
+      <a href="https://github.com/alexismacias10" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <span class="estado"><i></i> Disponible para nuevas oportunidades</span>
+    <h1>Interfaces web <em>claras, rápidas</em> y pensadas para convertir.</h1>
+    <p class="bajada">Soy Alexis Macías, desarrollador front-end. Construyo sitios responsive con HTML, CSS y JavaScript, cuidando el diseño, la accesibilidad y los detalles.</p>
+    <div class="acciones">
+      <a class="btn btn-principal" href="#proyectos">Ver proyectos</a>
+      <a class="btn btn-sec" href="https://github.com/alexismacias10" target="_blank" rel="noopener">Perfil de GitHub</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><strong>3</strong><span>Proyectos</span></div>
+      <div class="stat"><strong>100%</strong><span>Responsive</span></div>
+      <div class="stat"><strong>0</strong><span>Dependencias</span></div>
+    </div>
+  </header>
+</div>
+
+<section class="seccion" id="proyectos">
+  <div class="contenedor">
+    <h2>Proyectos destacados</h2>
+    <p>Cada uno resuelve un problema real de interfaz. Hacé clic para probarlos.</p>
+
+    <div class="proyectos">
+      <a class="proyecto" href="01-landing-refrigeracion/">
+        <div class="vista v1">
+          <span class="numero">01</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M4.9 6l14.2 12M19.1 6 4.9 18M9 3.5l3 2.5 3-2.5M9 20.5l3-2.5 3 2.5"/></svg>
+        </div>
+        <div class="cuerpo">
+          <h3>Landing de servicio técnico</h3>
+          <p>Hero con precio, servicios, zonas de atención y formulario que arma el mensaje de WhatsApp.</p>
+          <div class="tags"><span>HTML</span><span>CSS Grid</span><span>JavaScript</span><span>WhatsApp</span></div>
+          <span class="ver">Abrir proyecto</span>
+        </div>
+      </a>
+
+      <a class="proyecto" href="02-catalogo-productos/">
+        <div class="vista v2">
+          <span class="numero">02</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg>
+        </div>
+        <div class="cuerpo">
+          <h3>Catálogo de productos</h3>
+          <p>Búsqueda en vivo, filtros por categoría, orden por precio y carrito con contador.</p>
+          <div class="tags"><span>JavaScript</span><span>Filtros</span><span>Carrito</span><span>Intl</span></div>
+          <span class="ver">Abrir proyecto</span>
+        </div>
+      </a>
+
+      <a class="proyecto" href="03-formulario-turnos/">
+        <div class="vista v3">
+          <span class="numero">03</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18m-11 5 2 2 4-4"/></svg>
+        </div>
+        <div class="cuerpo">
+          <h3>Reserva de turnos</h3>
+          <p>Asistente de 3 pasos con validación por campo, ticket de confirmación y descarga .ics.</p>
+          <div class="tags"><span>Validación</span><span>Wizard</span><span>.ics</span><span>UX</span></div>
+          <span class="ver">Abrir proyecto</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="seccion" id="stack">
+  <div class="contenedor">
+    <h2>Tecnologías</h2>
+    <p>Fundamentos sólidos antes que frameworks.</p>
+    <div class="stack">
+      <span>HTML5 semántico</span><span>CSS3 · Grid · Flexbox</span><span>JavaScript ES6+</span><span>Diseño responsive</span><span>Accesibilidad</span><span>Git y GitHub</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="contenedor">
+    © <span id="anio"></span> Alexis Macías · <a href="https://github.com/alexismacias10" target="_blank" rel="noopener">github.com/alexismacias10</a>
+  </div>
+</footer>
+
+<script>document.getElementById('anio').textContent = new Date().getFullYear();</script>
 </body>
 </html>
