@@ -1,14 +1,63 @@
+[hidden] { display: none !important; }
 * { box-sizing: border-box; }
-body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 1rem; font-family: system-ui, sans-serif; background: #eef2f7; color: #1d2733; }
-.card { background: #fff; width: 100%; max-width: 440px; padding: 1.8rem; border-radius: 16px; box-shadow: 0 6px 24px rgba(0,0,0,.08); }
-h1 { margin: 0 0 1rem; font-size: 1.5rem; }
-form { display: grid; gap: .9rem; }
-label { display: grid; gap: .3rem; font-weight: 600; font-size: .95rem; }
-input, select, textarea { font: inherit; font-weight: 400; padding: .65rem; border: 1px solid #c4cdd8; border-radius: 8px; }
-input:focus, select:focus, textarea:focus { outline: 2px solid #3b82f6; border-color: transparent; }
-.invalido { border-color: #dc2626 !important; }
-.error { color: #dc2626; font-weight: 400; min-height: 1em; font-size: .85rem; }
-button { font: inherit; font-weight: 700; padding: .8rem; border: 0; border-radius: 10px; background: #2563eb; color: #fff; cursor: pointer; }
-button:hover { background: #1d4ed8; }
-#resumen { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e5e9ef; }
-#resumen h2 { margin: 0 0 .4rem; color: #15803d; font-size: 1.2rem; }
+:root { --menta: #0f766e; --menta-claro: #ccfbf1; --tinta: #0f172a; --gris: #64748b; --crema: #fbf8f1; --coral: #e11d48; }
+body { margin: 0; min-height: 100vh; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--tinta); background: var(--crema); padding: 1.5rem 1rem; }
+.app { max-width: 460px; margin: 0 auto; }
+
+.cabecera { margin-bottom: 1.4rem; }
+.marca { margin: 0; font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; color: var(--menta); font-weight: 700; }
+h1 { font-size: 1.7rem; line-height: 1.2; margin: .3rem 0 1rem; }
+h2 { font-size: 1.15rem; margin: 0 0 1rem; }
+
+/* Progreso: línea con puntos */
+.pasos { list-style: none; display: flex; justify-content: space-between; position: relative; padding: 0; margin: 0; color: var(--gris); font-size: .85rem; }
+.pasos::before { content: ""; position: absolute; top: 11px; left: 10%; right: 10%; height: 2px; background: #d6d3c8; z-index: 0; }
+.pasos li { position: relative; z-index: 1; background: var(--crema); padding: 0 .4rem; display: grid; justify-items: center; gap: .3rem; }
+.pasos li::before { content: ""; width: 12px; height: 12px; border-radius: 50%; background: #d6d3c8; }
+.pasos li.activo, .pasos li.hecho { color: var(--menta); font-weight: 700; }
+.pasos li.activo::before, .pasos li.hecho::before { background: var(--menta); }
+
+/* Paso 1: opciones como tarjetas */
+.opciones { display: grid; gap: .7rem; }
+.opcion { position: relative; }
+.opcion input { position: absolute; opacity: 0; pointer-events: none; }
+.opcion span { display: block; background: #fff; border: 2px solid #e7e2d6; border-radius: 14px; padding: .9rem 1rem; cursor: pointer; transition: border-color .15s, transform .15s; }
+.opcion strong { display: block; }
+.opcion small { color: var(--gris); }
+.opcion:hover span { transform: translateY(-1px); }
+.opcion input:checked + span { border-color: var(--menta); background: var(--menta-claro); }
+.opcion input:focus-visible + span { outline: 3px solid #5eead4; outline-offset: 2px; }
+
+/* Paso 2: horarios como chips */
+label { display: grid; gap: .35rem; font-weight: 600; font-size: .95rem; margin-bottom: .6rem; }
+input, textarea { font: inherit; font-weight: 400; padding: .75rem; border: 2px solid #e7e2d6; border-radius: 12px; background: #fff; }
+input:focus, textarea:focus { outline: none; border-color: var(--menta); }
+.etiqueta { font-weight: 600; font-size: .95rem; margin: 1rem 0 .5rem; }
+.horarios { display: flex; flex-wrap: wrap; gap: .5rem; }
+.hint { color: var(--gris); font-size: .9rem; }
+.chip { border: 2px solid #e7e2d6; background: #fff; border-radius: 999px; padding: .5rem .9rem; font: inherit; cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--menta); border-color: var(--menta); color: #fff; }
+
+.error { color: var(--coral); font-size: .85rem; min-height: 1.1em; margin: .3rem 0 0; }
+
+/* Botones */
+.barra { display: flex; justify-content: space-between; gap: .7rem; margin-top: 1.2rem; }
+.btn, .btn-sec { font: inherit; font-weight: 700; padding: .85rem 1.3rem; border-radius: 12px; cursor: pointer; border: 2px solid var(--menta); }
+.btn { background: var(--menta); color: #fff; flex: 1; }
+.btn:hover { background: #115e59; }
+.btn-sec { background: transparent; color: var(--menta); }
+.link { background: none; border: 0; color: var(--gris); text-decoration: underline; font: inherit; cursor: pointer; margin-top: .8rem; }
+
+/* Ticket */
+.ticket { margin-top: 1.5rem; background: #fff; border-radius: 18px; padding: 1.6rem 1.4rem; text-align: center; box-shadow: 0 10px 30px rgba(15,23,42,.08); position: relative; }
+.ticket::before, .ticket::after { content: ""; position: absolute; top: 58%; width: 26px; height: 26px; border-radius: 50%; background: var(--crema); }
+.ticket::before { left: -13px; }
+.ticket::after { right: -13px; }
+.ticket-titulo { color: var(--menta); font-weight: 800; letter-spacing: .08em; text-transform: uppercase; margin: 0 0 1rem; }
+.ticket-servicio { font-size: 1.3rem; font-weight: 800; margin: 0; }
+.ticket-fecha { font-size: 1.05rem; margin: .4rem 0; }
+.ticket-nombre { color: var(--gris); margin: 0 0 1.2rem; }
+.corte { border-top: 2px dashed #cbd5e1; margin: 0 -1.4rem 1.2rem; }
+.ticket .btn-sec { width: 100%; }
+
+@media (min-width: 600px) { .opciones { grid-template-columns: 1fr 1fr 1fr; } }

@@ -7,39 +7,70 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<main class="card">
-  <h1>Reservar turno</h1>
+<main class="app">
+  <header class="cabecera">
+    <p class="marca">Reserva de turnos</p>
+    <h1>Agendá tu visita en tres pasos</h1>
+    <ol class="pasos" id="pasos">
+      <li class="activo">Servicio</li>
+      <li>Fecha</li>
+      <li>Datos</li>
+    </ol>
+  </header>
+
   <form id="turno" novalidate>
-    <label>Nombre completo
-      <input name="nombre" required minlength="3" autocomplete="name">
-      <small class="error" data-for="nombre"></small>
-    </label>
-    <label>Email
-      <input name="email" type="email" required autocomplete="email">
-      <small class="error" data-for="email"></small>
-    </label>
-    <label>Fecha
-      <input name="fecha" type="date" required>
-      <small class="error" data-for="fecha"></small>
-    </label>
-    <label>Horario
-      <select name="hora" required>
-        <option value="">Elegí un horario</option>
-        <option>09:00</option><option>10:00</option><option>11:00</option>
-        <option>15:00</option><option>16:00</option><option>17:00</option>
-      </select>
-      <small class="error" data-for="hora"></small>
-    </label>
-    <label>Notas (opcional)
-      <textarea name="notas" rows="3" maxlength="200"></textarea>
-    </label>
-    <button type="submit">Confirmar turno</button>
+    <!-- Paso 1 -->
+    <section class="paso" data-paso="1">
+      <h2>¿Qué necesitás?</h2>
+      <div class="opciones" id="servicios"></div>
+      <p class="error" data-error="servicio"></p>
+    </section>
+
+    <!-- Paso 2 -->
+    <section class="paso" data-paso="2" hidden>
+      <h2>Elegí día y horario</h2>
+      <label>Fecha
+        <input type="date" name="fecha">
+      </label>
+      <p class="error" data-error="fecha"></p>
+      <p class="etiqueta">Horarios disponibles</p>
+      <div class="horarios" id="horarios">
+        <span class="hint">Primero elegí una fecha.</span>
+      </div>
+      <p class="error" data-error="hora"></p>
+    </section>
+
+    <!-- Paso 3 -->
+    <section class="paso" data-paso="3" hidden>
+      <h2>Tus datos</h2>
+      <label>Nombre completo
+        <input name="nombre" autocomplete="name">
+      </label>
+      <p class="error" data-error="nombre"></p>
+      <label>Email
+        <input name="email" type="email" autocomplete="email">
+      </label>
+      <p class="error" data-error="email"></p>
+      <label>Notas (opcional)
+        <textarea name="notas" rows="3" maxlength="200"></textarea>
+      </label>
+    </section>
+
+    <div class="barra">
+      <button type="button" class="btn-sec" id="atras" hidden>Volver</button>
+      <button type="button" class="btn" id="siguiente">Continuar</button>
+    </div>
   </form>
 
-  <section id="resumen" hidden>
-    <h2>¡Turno reservado!</h2>
-    <p id="resumen-texto"></p>
-    <button id="nuevo" type="button">Reservar otro</button>
+  <!-- Confirmación en formato ticket -->
+  <section class="ticket" id="ticket" hidden>
+    <p class="ticket-titulo">Turno confirmado</p>
+    <p class="ticket-servicio" id="t-servicio"></p>
+    <p class="ticket-fecha" id="t-fecha"></p>
+    <p class="ticket-nombre" id="t-nombre"></p>
+    <div class="corte"></div>
+    <button type="button" class="btn-sec" id="ics">Agregar al calendario</button>
+    <button type="button" class="link" id="nuevo">Reservar otro turno</button>
   </section>
 </main>
 <script src="script.js"></script>
