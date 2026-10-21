@@ -6,13 +6,13 @@ const servicios = [
   { titulo: 'Carga de gas automotor', detalle: 'Rápido y seguro' },
 ];
 
-const grid = document.getElementById('servicios');
+const grid = document.getElementById('servicios-lista');
 grid.innerHTML = servicios
-  .map(s => `<article class="card"><h3>${s.titulo}</h3><p>${s.detalle}</p></article>`)
+  .map(s => `<article class="card"><div class="icono">${s.titulo[0]}</div><h3>${s.titulo}</h3><p>${s.detalle}</p></article>`)
   .join('');
 
 // Formulario: valida y arma un mensaje para WhatsApp.
-const form = document.getElementById('contacto');
+const form = document.getElementById('formulario');
 const msg = form.querySelector('.msg');
 
 form.addEventListener('submit', e => {
