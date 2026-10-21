@@ -4,32 +4,47 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>RefrigeracionTUC | Reparación de heladeras y aires</title>
-<meta name="description" content="Reparación de heladeras, freezers, aires acondicionados y lavarropas. Fuera de Tafí Viejo: presupuesto $10.000.">
+<meta name="description" content="Reparación de heladeras, freezers, aires acondicionados y lavarropas en Tafí Viejo. Presupuesto antes de reparar.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="aviso">Atendemos Tafí Viejo y alrededores · <a href="#contacto">Pedí tu presupuesto</a></div>
-
 <header class="site-header">
   <div class="contenedor nav">
-    <span class="logo">RefrigeracionTUC</span>
-    <a class="btn btn-chico" href="https://wa.me/5493816443138" target="_blank" rel="noopener">WhatsApp</a>
+    <a class="logo" href="#inicio">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 2v20M4.9 6.5l14.2 11M19.1 6.5l-14.2 11"/></svg>
+      Refrigeracion<b>TUC</b>
+    </a>
+    <nav class="menu" aria-label="Principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Cómo trabajamos</a>
+      <a href="#zonas">Zonas</a>
+      <a href="#faq">Preguntas</a>
+    </nav>
+    <a class="btn btn-chico" data-wa href="#" target="_blank" rel="noopener">Escribinos</a>
   </div>
 </header>
 
+<main id="inicio">
 <section class="hero">
   <div class="contenedor hero-grid">
-    <div>
-      <p class="etiqueta">Servicio técnico</p>
-      <h1>Tu tranquilidad, nuestro trabajo</h1>
-      <p class="bajada">Reparamos heladeras, freezers, aires acondicionados y lavarropas. Todas las marcas y modelos.</p>
+    <div class="hero-texto">
+      <span class="pildora"><i></i> Atendemos Tafí Viejo y alrededores</span>
+      <h1>Tu equipo funcionando <em>otra vez</em>, sin vueltas.</h1>
+      <p class="bajada">Reparamos heladeras, freezers, aires acondicionados y lavarropas. Todas las marcas. Te pasamos el presupuesto antes de tocar nada.</p>
       <div class="acciones">
         <a class="btn" href="#contacto">Pedir presupuesto</a>
-        <a class="btn btn-outline" href="#servicios">Ver servicios</a>
+        <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
       </div>
+      <ul class="confianza">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg> Todas las marcas</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg> Presupuesto previo</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg> Todos los medios de pago</li>
+      </ul>
     </div>
+
     <aside class="precio-card">
+      <span class="copo" aria-hidden="true">❄</span>
       <p class="precio-label">Visita fuera de Tafí Viejo</p>
       <p class="precio">$10.000</p>
       <ul>
@@ -37,30 +52,74 @@
         <li>Presupuesto antes de reparar</li>
         <li>Pagos en efectivo y digitales</li>
       </ul>
-      <a class="btn btn-bloque" href="https://wa.me/5493816443138" target="_blank" rel="noopener">Consultar por WhatsApp</a>
+      <a class="btn btn-bloque" data-wa href="#" target="_blank" rel="noopener">Consultar por WhatsApp</a>
     </aside>
   </div>
 </section>
 
 <section class="seccion" id="servicios">
   <div class="contenedor">
-    <h2>Servicios</h2>
+    <p class="etiqueta">Servicios</p>
+    <h2>Lo que reparamos</h2>
     <div class="grid" id="servicios-lista"></div>
   </div>
 </section>
 
-<section class="seccion alt">
+<section class="seccion alt" id="proceso">
   <div class="contenedor">
+    <p class="etiqueta">Cómo trabajamos</p>
+    <h2>Simple y sin sorpresas</h2>
+    <ol class="pasos">
+      <li><span class="n">1</span><h3>Nos escribís</h3><p>Contanos qué equipo es y qué le pasa. Respondemos por WhatsApp.</p></li>
+      <li><span class="n">2</span><h3>Vamos y diagnosticamos</h3><p>Revisamos el equipo en el lugar y detectamos la falla.</p></li>
+      <li><span class="n">3</span><h3>Presupuesto claro</h3><p>Te decimos el costo antes de empezar. Si no te sirve, no pagás la reparación.</p></li>
+      <li><span class="n">4</span><h3>Lo dejamos andando</h3><p>Reparamos y probamos el equipo con vos presente.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="seccion" id="zonas">
+  <div class="contenedor">
+    <p class="etiqueta">Cobertura</p>
     <h2>Zonas de atención</h2>
     <div class="grid grid-2">
-      <div class="card">
+      <div class="zona">
         <h3>Tafí Viejo</h3>
         <p>Visita incluida en la zona.</p>
+        <span class="tag tag-ok">Sin costo de visita</span>
       </div>
-      <div class="card">
+      <div class="zona">
         <h3>Fuera de Tafí Viejo</h3>
         <p>Presupuesto de visita: <strong>$10.000</strong></p>
+        <span class="tag">Llegamos a los alrededores</span>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="seccion alt" id="faq">
+  <div class="contenedor faq-wrap">
+    <div>
+      <p class="etiqueta">Preguntas frecuentes</p>
+      <h2>Antes de escribirnos</h2>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>¿Reparan todas las marcas?</summary>
+        <p>Sí, trabajamos con todas las marcas y modelos de heladeras, freezers, aires y lavarropas.</p>
+      </details>
+      <details>
+        <summary>¿Cuánto cuesta la visita?</summary>
+        <p>En Tafí Viejo la visita está incluida. Fuera de la zona, el presupuesto de visita es de $10.000.</p>
+      </details>
+      <details>
+        <summary>¿Cómo puedo pagar?</summary>
+        <p>Recibimos efectivo y todos los medios de pago digitales.</p>
+      </details>
+      <details>
+        <summary>¿También hacen instalaciones?</summary>
+        <p>Sí, instalamos y reparamos aires acondicionados para hogar y comercio. También hacemos carga de gas automotor.</p>
+      </details>
     </div>
   </div>
 </section>
@@ -68,15 +127,16 @@
 <section class="seccion" id="contacto">
   <div class="contenedor contacto-grid">
     <div>
+      <p class="etiqueta">Contacto</p>
       <h2>Consultá sin compromiso</h2>
-      <p>Dejanos tus datos y te respondemos por WhatsApp.</p>
+      <p class="sub">Dejanos tus datos y te respondemos por WhatsApp con el presupuesto.</p>
     </div>
     <form id="formulario" class="form" novalidate>
       <label>Nombre
-        <input name="nombre" required minlength="2" autocomplete="name">
+        <input name="nombre" required minlength="2" autocomplete="name" placeholder="Tu nombre">
       </label>
       <label>Teléfono
-        <input name="telefono" type="tel" required pattern="[0-9 +()-]{6,}" autocomplete="tel">
+        <input name="telefono" type="tel" required pattern="[0-9 +()\-]{6,}" autocomplete="tel" placeholder="381 000 0000">
       </label>
       <label>Servicio
         <select name="servicio" required>
@@ -87,20 +147,27 @@
           <option>Carga de gas automotor</option>
         </select>
       </label>
-      <button class="btn" type="submit">Enviar por WhatsApp</button>
+      <button class="btn btn-bloque" type="submit">Enviar por WhatsApp</button>
       <p class="msg" role="status"></p>
     </form>
   </div>
 </section>
+</main>
 
 <footer class="site-footer">
-  <div class="contenedor">
-    <p><strong>RefrigeracionTUC</strong></p>
-    <p>Recibimos todos los medios de pago · Calidad, confianza y buen servicio</p>
+  <div class="contenedor foot">
+    <div>
+      <strong>RefrigeracionTUC</strong>
+      <p>Calidad, confianza y buen servicio.</p>
+    </div>
+    <p>Recibimos todos los medios de pago</p>
   </div>
 </footer>
 
-<a class="whatsapp-flotante" href="https://wa.me/5493816443138" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">WhatsApp</a>
+<a class="whatsapp-flotante" data-wa href="#" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.3.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.2 1.4 2.5 1.5.3.1.4.1.6-.1l.8-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.6.3.1.2.1.8-.1 1.4z"/></svg>
+  <span>WhatsApp</span>
+</a>
 
 <script src="script.js"></script>
 </body>
